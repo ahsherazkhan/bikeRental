@@ -14,8 +14,9 @@ export default function Signup() {
       [e.target.name]: e.target.value,
     });
   };
+  const handleChange2 = (e) => {};
 
-  //when user taps on signup button
+  //when user taps on signup button or hit the enter
   const Submit = (e) => {
     e.preventDefault();
     signupUser({
