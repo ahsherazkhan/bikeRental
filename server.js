@@ -1,5 +1,4 @@
 import { ApolloServer } from "apollo-server";
-import { startStandaloneServer } from "@apollo/server/standalone";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import typeDefs from "./schemaGql.js";
 import mongoose from "mongoose";
@@ -19,14 +18,8 @@ mongoose.connection.on("error", (err) => {
   console.log("Error connecting to DB", err);
 });
 
-// const cors = require("cors");
-
-// app.use(cors()); // Use this after the variable declaration
-
-//imports models
 import "./models/Bike.js";
 import "./models/User.js";
-// import "./models/Bookings.js";
 import resolvers from "./resolvers.js";
 
 const context = ({ req }) => {
@@ -42,13 +35,7 @@ const server = new ApolloServer({
   resolvers,
   context,
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
-  //   plugins: [ApolloServerPlugin],
 });
-
-// const { url } = await startStandaloneServer(server, {
-//   listen: { port: 4000 },
-// });
-// console.log(`🚀  Server ready at: ${url}`);
 
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at: ${url}`);
