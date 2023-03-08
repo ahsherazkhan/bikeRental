@@ -1,4 +1,6 @@
 import { gql } from "@apollo/client";
+
+//query to get all bikes
 export const GET_ALL_BIKES = gql`
   query getAllBikes {
     bikes {
@@ -13,6 +15,7 @@ export const GET_ALL_BIKES = gql`
   }
 `;
 
+//query to get all the bookings
 export const GET_ALL_BOOKINGS = gql`
   query getAllBookings {
     bookings {
@@ -28,6 +31,7 @@ export const GET_ALL_BOOKINGS = gql`
   }
 `;
 
+//query to get profile information
 export const GET_MY_PROFILE = gql`
   query getMyProfile {
     user: myprofile {
@@ -42,6 +46,7 @@ export const GET_MY_PROFILE = gql`
   }
 `;
 
+//query to get a user by id
 export const GET_USER_BY_ID = gql`
   query getUserById($userid: ID!) {
     user(_id: $userid) {

@@ -7,6 +7,7 @@ import { v4 } from "uuid";
 import { useEffect } from "react";
 import M from "materialize-css";
 import { storage } from "../Firebase";
+import { CustomButton1 } from "./Class";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 export default function CreatePost() {
   const [bike, setBike] = useState("");
@@ -39,6 +40,8 @@ export default function CreatePost() {
     const metadata = {
       contentType: "image/jpeg",
     };
+
+    //method to upload an image to the bucket
     uploadBytes(imageRef, image, metadata)
       .then(() => {
         getDownloadURL(imageRef)
@@ -76,10 +79,13 @@ export default function CreatePost() {
         />
         <input
           type="file"
+          variant="contained"
           name="file"
           onChange={(e) => setImage(e.target.files[0])}
         />
-        <button className="btn green center">create</button>
+        <CustomButton1 variant="contained" onClick={handleSubmit}>
+          Create
+        </CustomButton1>
       </form>
     </div>
   );

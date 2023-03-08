@@ -20,14 +20,3 @@ export const CustomBox = styled(Box)({
   backgroundColor: "Black!important",
   component: "footer",
 });
-// export const CustomButton2 = styled(Button)({
-//   marginTop: "40px !important",
-// });
-
-// export const CustomButton3 = styled(Button)({
-//   marginTop: "40px !important",
-// });
-
-// export const CustomButton4 = styled(Button)({
-//   marginTop: "40px !important",
-// });

@@ -6,14 +6,16 @@ export default function Signup() {
   const [formData, setFormData] = useState({});
   const [signupUser, { data, loading, error }] = useMutation(SIGNUP_USER);
   if (loading) return <h1>Loading</h1>;
+
   const hadleChange = (e) => {
-    //tspread is used to not destroy the existing value in the state
+    //spread is used to not destroy the existing value in the state
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
+  //when user taps on signup button
   const Submit = (e) => {
     e.preventDefault();
     signupUser({

@@ -43,7 +43,7 @@ export default function Profile() {
         <Grid container spacing={5}>
           {data.user.bikes.map((quo) => {
             return (
-              <Grid item key={quo} xs={12} sm={6} md={4}>
+              <Grid item key={quo._id} xs={12} sm={6} md={4}>
                 <Card
                   sx={{
                     height: "100%",

@@ -34,19 +34,14 @@ export default function Home() {
   const navigate = useNavigate();
   const [setbookingStartDate, setStart] = useState(new Date());
   const [setbookingEndDate, setEnd] = useState(new Date());
-  // useEffect(() => {
-  //   const mynewbooking = data.bikes.map((bike) => {
-  //     if (bike._id != data2.bookings.bikes._id) {
-  //       return (bikearray = bike);
-  //     }
-  //   });
-  // }, []);
-  const setDateformat = (currentDate) => {
-    const currentday = currentDate.getDate();
-    return `${currentday.toString().padStart(2, "0")}`;
+  const Format = (quo) => {
+    const date = new Date(parseInt(quo));
+    const day = date.getDate();
+    const val = `${day.toString().padStart(2, "0")}`;
+    return val;
   };
   const dateFormat = (quo) => {
-    const date = new Date(parseInt(quo));
+    const date = new Date(quo);
     const day = date.getDate();
     const val = `${day.toString().padStart(2, "0")}`;
     return val;
@@ -54,22 +49,14 @@ export default function Home() {
 
   const handleChange = (quo) => {
     let check = true;
-    // if (!loading2) console.log("6666666666666666", data2);
-    // else console.log("6666666666errrerererere666666", error2);
-    const newbooking = data2.bookings.map((booked) => {
-      if (booked.bikes._id === quo._id) console.log(booked.bikes._id);
-      return {
-        booked,
-      };
-    });
-    // console.log(newbooking);
+    const newbooking = data2.bookings.filter(
+      (booked) => booked.bikes._id === quo._id
+    );
     newbooking.map((booked) => {
-      console.log(
-        "=============1===1===" + booked + dateFormat(setbookingStartDate)
-      );
       if (
-        dateFormat(booked.bookingEndDate) > dateFormat(setbookingStartDate) &&
-        dateFormat(booked.bookingStartDate) < dateFormat(setbookingEndDate)
+        Format(booked.bookingEndDate) >
+          dateFormat(String(setbookingStartDate)) &&
+        Format(booked.bookingStartDate) < dateFormat(String(setbookingEndDate))
       ) {
         console.log(" Bike has already been booked in this time slot");
         alert(" Bike has already been booked in this time slot");
@@ -136,16 +123,14 @@ export default function Home() {
             </Stack>
           </LocalizationProvider>
         </div>
+
         <h3 sx={{ display: "flex" }}>Available Bikes</h3>
 
         <Container sx={{ py: 8 }}>
           <Grid container spacing={5}>
             {data.bikes.map((quo) => {
-              {
-                /* {mynewbooking.map((quo) => { */
-              }
               return (
-                <Grid item key={quo} xs={12} sm={6} md={4}>
+                <Grid item key={quo._id} xs={12} sm={6} md={4}>
                   <Card
                     sx={{
                       height: "100%",
