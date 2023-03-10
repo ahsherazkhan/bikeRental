@@ -39,3 +39,11 @@ export const REMOVE_BOOKING = gql`
     removeBookings(_id: $_id)
   }
 `;
+
+export const FORGOT_PASSWORD = gql`
+  mutation forgotPassword($userSignin: UserSigninInput!) {
+    user: forgotPassword(userSignin: $userSignin) {
+      message
+    }
+  }
+`;

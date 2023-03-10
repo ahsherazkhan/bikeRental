@@ -9,23 +9,27 @@ import M from "materialize-css";
 import { storage } from "../Firebase";
 import { CustomButton1 } from "./Class";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
 export default function CreatePost() {
   const [bike, setBike] = useState("");
   const [image, setImage] = useState(null);
   const [imageUrl, setUrl] = useState("");
 
   const navigate = useNavigate();
+
   const [createNewBike, { loading, error, data }] = useMutation(
     CREATE_NEW_BIKE,
     {
       refetchQueries: ["getAllBikes", "getMyProfile"],
     }
   );
+
   useEffect(() => {
     // Initialize dropdown menu
     const dropdowns = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(dropdowns);
   }, []);
+
   if (loading) return <h1>Loading</h1>;
   if (error) {
     console.log("error", error);
@@ -34,6 +38,7 @@ export default function CreatePost() {
     navigate("/login");
     return <h1>Loading...</h1>;
   }
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const imageRef = ref(storage, `images/${image.name + v4()}`);
