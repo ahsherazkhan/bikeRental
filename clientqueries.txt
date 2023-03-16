@@ -1,0 +1,180 @@
+---------------------------
+query getAllUsers{
+  users{
+    _id
+    firstName
+    lastName
+    email
+  }
+}
+---------------------------
+query getUserById{
+  user(_id:"23131"){
+    _id
+    firstName
+    lastName
+    email
+  }
+}
+----------------------
+query getUserById($userid:ID!){
+  user(_id:$userid){
+    _id
+    firstName
+    lastName
+    email
+  }
+}
+-----------------------------
+query getAllQuotes{
+  quotes{
+    name
+    by  
+  }
+}
+-----------------------------
+query getQuotebyUser{
+  iquote(by:"4232"){
+    name
+    by
+  }
+}
+-----------------
+query getQuoteByUser($quoteby:ID!){
+  iquote(by:$quoteby){
+    name
+    by
+  }
+}
+-------
+mutation createUser($userNew:UserInput!){
+  user:signupUserDummy(userNew:$userNew){ 
+    _id
+    email
+    firstName
+    lastName
+  }
+}
+
+{
+  "userNew": {
+    "firstName": "navin",
+    "lastName": "ssd",
+    "email": "sdsad@sd.com",
+    "password": "12345"
+  }
+}
+------------
+mutation createUser($userNew:UserInput!){
+  user:signupUser(userNew:$userNew){ 
+    _id
+    email
+    firstName
+    lastName
+  }
+}
+
+{
+  "userNew": {
+    "firstName": "navin",
+    "lastName": "sharma",
+    "email": "navin@navin.com",
+    "password": "12345"
+  }
+}
+
+--------
+mutation SigninUser($userSignin:UserSigninInput!){
+  user:signinUser(userSignin:$userSignin){ 
+    token
+  }
+}
+
+{
+  "userSignin": {
+    "email": "navin@navin.com",
+    "password": "12345"
+  }
+}
+------
+
+
+mutation createQuote{
+  quote:createQuote(name:"i am another nice quote")
+}
+
+--------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  /* <div>
+          <Dropdown
+            label="Select Model"
+            options={options}
+            value={value}
+            // onChange={handleChange}
+          />
+
+          <p>We eat {value}!</p>
+        </div> */
+}
+
+{
+  /* <a
+          value={TYPE}
+          onChange={(e) => setSelected(e.target.value)}
+          className="dropdown-trigger btn"
+          to="#"
+          data-target="dropdown1"
+        >
+          Drop Me!
+        </a>
+        <ul id="dropdown1" className="dropdown-content">
+          <li>
+            <a
+              href="#!"
+              value="Suzuki"
+              text="GS-135"
+              image="../images/suzuki.jpg"
+            >
+              Suzuki
+            </a>
+          </li>
+          <li className="divider" tabindex="-1"></li>
+          <li>
+            <Link
+              to="#!"
+              value="Honda"
+              text="CD-125"
+              image="../images/Honda125.jpg"
+            >
+              Honda
+            </Link>
+          </li>
+          <li className="divider" tabindex="-1"></li>
+          <li>
+            <Link
+              to="#!"
+              value="Yamaha"
+              text="YBR"
+              image="../images/Yamaha.jpg"
+            >
+              Yamaha
+            </Link>
+          </li>
+        </ul> */
+}
